@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dairy Management — Pro</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo" ><img src="logo.png"  srcset="logo"></div>
+        <div>
+          <h1>Dairy<span>Pro</span></h1>
+          <small>Local - Offline</small>
+        </div>
+      </div>
+
+      <div class="locations-panel">
+        <div class="locations-header">
+          <strong>Locations</strong>
+          <button id="addLocationBtn" class="icon-btn" title="Add location">＋</button>
+        </div>
+        <ul id="locationList" class="location-list"></ul>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="side-btn active" data-tab="dashboard">Dashboard</button>
+        <button class="side-btn" data-tab="customers">Customers</button>
+        <button class="side-btn" data-tab="products">Products</button>
+        <button class="side-btn" data-tab="entries">Entries</button>
+        <button class="side-btn" data-tab="summary">Summary</button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <small>Data stored locally (localStorage)</small>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <header class="topbar">
+        <div class="left">
+          <h2 id="currentLocationTitle">No location selected</h2>
+        </div>
+
+        <div class="right">
+          <input id="globalSearch" placeholder="Search customers or products..." />
+          <button id="searchBtn" class="btn subtle">Search</button>
+          <button id="clearSearchBtn" class="btn subtle">Clear</button>
+        </div>
+      </header>
+
+      <section id="contentArea" class="content-area">
+        <!-- Dashboard -->
+        <div id="dashboard" class="tab-view active">
+          <div class="grid">
+            <div class="card">
+              <h3 id="dashLocation">—</h3>
+              <p id="dashInfo">Select a location to see quick stats</p>
+            </div>
+            <div class="card small">
+              <h4>This Month (Liters)</h4>
+              <div id="dashLiters">0 L</div>
+            </div>
+            <div class="card small">
+              <h4>This Month (Amount)</h4>
+              <div id="dashAmount">₹0</div>
+            </div>
+            <div class="card small">
+              <h4>Customers</h4>
+              <div id="dashCustomers">0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Customers -->
+        <div id="customers" class="tab-view">
+          <div class="card">
+            <div class="row">
+              <h3>Customers — <span id="customersLocation">No location</span></h3>
+              <div>
+                <button id="btnAddCustomer" class="btn">+ Add Customer</button>
+              </div>
+            </div>
+
+            <table class="table" id="customersTable">
+              <thead><tr><th>Name</th><th>Phone</th><th>Balance</th><th>Actions</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Products -->
+        <div id="products" class="tab-view">
+          <div class="card">
+            <div class="row">
+              <h3>Products — <span id="productsLocation">No location</span></h3>
+              <div>
+                <button id="btnAddProduct" class="btn">+ Add Product</button>
+              </div>
+            </div>
+
+            <table class="table" id="productsTable">
+              <thead><tr><th>Product</th><th>Rate (₹)</th><th>Actions</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Entries -->
+        <div id="entries" class="tab-view">
+          <div class="card">
+            <h3>New Entry — <span id="entriesLocation">No location</span></h3>
+            <div class="form-grid">
+              <div><label>Customer</label><select id="entryCustomer"></select></div>
+              <div><label>Product</label><select id="entryProduct"></select></div>
+              <div><label>Date</label><input id="entryDate" type="date"></div>
+              <div><label>Quantity (L)</label><input id="entryQty" type="number" min="0" step="0.01"></div>
+              <div><label>Rate (₹)</label><input id="entryRate" type="number" min="0" step="0.01"></div>
+              <div><label>Amount (₹)</label><input id="entryAmount" readonly></div>
+            </div>
+            <div class="row" style="margin-top:10px;">
+              <button id="saveEntryBtn" class="btn">Save Entry</button>
+              <button id="clearEntryBtn" class="btn subtle">Clear</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h4>Recent Entries</h4>
+            <table class="table" id="entriesTable">
+              <thead><tr><th>Date</th><th>Customer</th><th>Product</th><th>Qty</th><th>Rate</th><th>Amount</th><th>Action</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div id="summary" class="tab-view">
+          <div class="card">
+            <h3>Monthly Summary — <span id="summaryLocation">No location</span></h3>
+            <div class="row">
+              <label>Month <input id="summaryMonth" type="month"></label>
+              <button id="showSummaryBtn" class="btn">Show</button>
+            </div>
+            <div id="summaryResult" style="margin-top:12px;"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <h1 class="myinfo">gurjinder singh</h1>
+<h1 class="myinfo">gurpal singh</h1>
+
+  <script src="script.js"></script>
+</body>
+</html>
