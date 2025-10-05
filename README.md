@@ -1,1 +1,0 @@
-# gurpal88.github.io
